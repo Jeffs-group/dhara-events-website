@@ -1,0 +1,567 @@
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
+export const DARK_BLUR_DATA_URL =
+  'data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect width="100%25" height="100%25" fill="%230E1020"/%3E%3C/svg%3E';
+
+export const NAV_ITEMS: NavItem[] = [
+  { label: 'HOME', href: '/' },
+  { label: 'ABOUT', href: '/about' },
+  { label: 'EVENTS', href: '/events' },
+  { label: 'CONTACT', href: '/contact' },
+];
+
+export const CONTACT_INFO = {
+  company: 'DHARA Event Pvt. Ltd.',
+  tagline: 'Creating Experiences. Delivering Excellence.',
+  phone: '+91 99019 45636',
+  phoneClean: '+919901945636',
+  email: 'bhuvighimag@gmail.com',
+  whatsappUrl: 'https://wa.me/919901945636?text=Hi%20DHARA%20Events%2C%20I%20would%20like%20to%20enquire%20about%20event%20management%20services.',
+  address: 'Bengaluru, Karnataka & Pan-India Event Delivery',
+  hours: 'Mon – Sat: 9:00 AM – 8:00 PM',
+};
+
+export const FOOTER_LINKS = {
+  navigation: [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Events', href: '/events' },
+    { label: 'Leadership', href: '/about#leadership' },
+    { label: 'Contact', href: '/contact' },
+  ],
+  services: [
+    { label: 'Sports Events', href: '/events#sports' },
+    { label: 'Corporate Events', href: '/events#corporate' },
+    { label: 'Weddings & Social', href: '/events#weddings' },
+    { label: 'Entertainment & Live', href: '/events#entertainment' },
+    { label: 'Event Production', href: '/events#services' },
+  ],
+};
+
+export const HOME_BENTO = [
+  {
+    number: '01',
+    title: 'Sports Events',
+    description: 'Leagues, tournaments, championships, competitions, sporting festivals, opening and closing ceremonies and sports-related programmes.',
+    image: '/images/large-scale-stadium.jpg',
+    width: 3840,
+    height: 2143,
+    href: '/events#sports',
+    colSpan: 'col-span-1 md:col-span-1 lg:col-span-6',
+  },
+  {
+    number: '02',
+    title: 'Corporate Events',
+    description: 'Conferences, seminars, meetings, annual functions, product launches, award ceremonies, dealer meets, employee engagement programmes and corporate celebrations.',
+    image: '/images/capability-branding.jpg',
+    width: 2400,
+    height: 1792,
+    href: '/events#corporate',
+    colSpan: 'col-span-1 md:col-span-1 lg:col-span-6',
+  },
+  {
+    number: '03',
+    title: 'Weddings & Social',
+    description: 'Weddings, receptions, engagements, anniversaries, birthdays and social celebrations with planning, décor, entertainment, hospitality, catering and logistics.',
+    image: '/images/capability-catering.jpg',
+    width: 2400,
+    height: 1792,
+    href: '/events#weddings',
+    colSpan: 'col-span-1 md:col-span-1 lg:col-span-6',
+  },
+  {
+    number: '04',
+    title: 'Entertainment & Live',
+    description: 'Concerts, musical shows, cultural events, festivals, fashion shows, celebrity events and public programmes.',
+    image: '/images/capability-audiovisual.jpg',
+    width: 2400,
+    height: 1792,
+    href: '/events#entertainment',
+    colSpan: 'col-span-1 md:col-span-2 lg:col-span-12',
+  },
+];
+
+export const CAPABILITIES = [
+  {
+    id: '01',
+    title: 'EVENT PRODUCTION',
+    heading: 'Event Production',
+    description: 'Stage design and construction, LED screens, video walls, sound systems, professional lighting, trussing, special effects, generators, power supply and technical equipment.',
+    image: '/images/capability-audiovisual.jpg',
+    width: 2400,
+    height: 1792,
+  },
+  {
+    id: '02',
+    title: 'BRANDING & MARKETING',
+    heading: 'Branding & Marketing',
+    description: 'Venue branding, signage, banners, backdrop fabrication, promotional merchandise, digital collateral, sponsor visibility and on-ground activation.',
+    image: '/images/capability-branding.jpg',
+    width: 2400,
+    height: 1792,
+  },
+  {
+    id: '03',
+    title: 'AUDIO-VISUAL PRODUCTION',
+    heading: 'Audio-Visual Production',
+    description: 'High-definition sound engineering, line-array audio systems, projection mapping, multi-camera broadcasting and immersive lighting setups.',
+    image: '/images/capability-audiovisual.jpg',
+    width: 2400,
+    height: 1792,
+  },
+  {
+    id: '04',
+    title: 'VENUE & DÉCOR',
+    heading: 'Venue & Décor',
+    description: 'Architectural styling, bespoke floral installations, custom stage structures, luxury seating, themed environments and immersive ambience.',
+    image: '/images/capability-hospitality.jpg',
+    width: 2400,
+    height: 1792,
+  },
+  {
+    id: '05',
+    title: 'CATERING',
+    heading: 'Gourmet Catering',
+    description: 'Gourmet culinary experiences, customized multi-cuisine banquet menus, beverage management, live cooking stations and VIP hospitality service.',
+    image: '/images/capability-catering.jpg',
+    width: 2400,
+    height: 1792,
+  },
+  {
+    id: '06',
+    title: 'ARTIST & CELEBRITY MANAGEMENT',
+    heading: 'Artist & Celebrity Management',
+    description: 'Artist booking, celebrity curation, rider management, green room setup, security escort and seamless backstage coordination.',
+    image: '/images/capability-hospitality.jpg',
+    width: 2400,
+    height: 1792,
+  },
+  {
+    id: '07',
+    title: 'LOGISTICS & TRANSPORTATION',
+    heading: 'Logistics & Transportation',
+    description: 'Fleet management, VIP transit, equipment freight, customs clearance, venue access control and on-time technical dispatch.',
+    image: '/images/capability-logistics.jpg',
+    width: 2400,
+    height: 1792,
+  },
+  {
+    id: '08',
+    title: 'EVENT MANPOWER',
+    heading: 'Event Manpower',
+    description: 'Trained event managers, technical crew, guest concierges, security personnel, ushering teams and on-ground brand ambassadors.',
+    image: '/images/capability-manpower.jpg',
+    width: 2400,
+    height: 1792,
+  },
+  {
+    id: '09',
+    title: 'SPONSORSHIP & COMMERCIAL ACTIVATION',
+    heading: 'Sponsorship & Commercial Activation',
+    description: 'Sponsor inventory packaging, brand integration, VIP hospitality lounges, exhibition stalls and interactive fan engagement zones.',
+    image: '/images/capability-sponsorship.jpg',
+    width: 2400,
+    height: 1792,
+  },
+  {
+    id: '10',
+    title: 'HOSPITALITY & VIP MANAGEMENT',
+    heading: 'Hospitality & VIP Management',
+    description: 'Bespoke VIP lounge hosting, red carpet protocols, premium seating, protocol escort services and tailored guest care.',
+    image: '/images/capability-hospitality.jpg',
+    width: 2400,
+    height: 1792,
+  },
+  {
+    id: '11',
+    title: 'PR & DIGITAL MARKETING',
+    heading: 'PR & Digital Marketing',
+    description: 'Press coverage, media relations, influencer partnerships, live streaming, real-time social media content and post-event highlight reels.',
+    image: '/images/capability-branding.jpg',
+    width: 2400,
+    height: 1792,
+  },
+];
+
+export const GALLERY_ITEMS = [
+  {
+    number: '01',
+    title: 'SPORTS EVENTS',
+    image: '/images/large-scale-stadium.jpg',
+    width: 3840,
+    height: 2143,
+    span: 'col-span-12 md:col-span-4 lg:col-span-3',
+  },
+  {
+    number: '02',
+    title: 'CORPORATE EXPERIENCES',
+    image: '/images/capability-branding.jpg',
+    width: 2400,
+    height: 1792,
+    span: 'col-span-12 md:col-span-8 lg:col-span-5',
+  },
+  {
+    number: '03',
+    title: 'WEDDINGS & SOCIAL',
+    image: '/images/capability-catering.jpg',
+    width: 2400,
+    height: 1792,
+    span: 'col-span-12 md:col-span-12 lg:col-span-4 lg:row-span-2',
+  },
+  {
+    number: '04',
+    title: 'LIVE ENTERTAINMENT',
+    image: '/images/capability-audiovisual.jpg',
+    width: 2400,
+    height: 1792,
+    span: 'col-span-12 md:col-span-6 lg:col-span-4',
+  },
+  {
+    number: '05',
+    title: 'EVENT PRODUCTION',
+    image: '/images/capability-logistics.jpg',
+    width: 2400,
+    height: 1792,
+    span: 'col-span-12 md:col-span-6 lg:col-span-4',
+  },
+  {
+    number: '06',
+    title: 'HOSPITALITY',
+    image: '/images/capability-hospitality.jpg',
+    width: 2400,
+    height: 1792,
+    span: 'col-span-12 md:col-span-12 lg:col-span-4',
+  },
+];
+
+export const SPORTS_SCALE_STEPS = [
+  { id: '01', title: 'CONCEPT' },
+  { id: '02', title: 'PLANNING' },
+  { id: '03', title: 'VENUE' },
+  { id: '04', title: 'MATCH-DAY' },
+  { id: '05', title: 'PRODUCTION' },
+  { id: '06', title: 'BROADCAST' },
+  { id: '07', title: 'HOSPITALITY' },
+  { id: '08', title: 'EXECUTION' },
+];
+
+export const SPORTS_TAGS = [
+  'Venue Management',
+  'Match-Day Operations',
+  'Production',
+  'Broadcasting',
+  'Live Streaming',
+  'Branding',
+  'Sponsorship Activation',
+  'Hospitality',
+  'Ticketing',
+  'Logistics',
+  'Security',
+  'Transportation',
+  'Accommodation',
+];
+
+export const ABOUT_DELIVERY_STEPS = [
+  {
+    step: '01',
+    name: 'PLAN',
+    description: 'Conceptualize, plan, organize and develop the event.',
+  },
+  {
+    step: '02',
+    name: 'PRODUCE',
+    description: 'Stage, LED, sound, lighting, audiovisual and technical production.',
+  },
+  {
+    step: '03',
+    name: 'MANAGE',
+    description: 'Venue, branding, sponsorship, hospitality, artists, catering, logistics and manpower.',
+  },
+  {
+    step: '04',
+    name: 'EXECUTE',
+    description: 'Coordinate teams, operations, technical requirements and on-ground delivery.',
+  },
+  {
+    step: '05',
+    name: 'DELIVER',
+    description: 'Provide turnkey, end-to-end event solutions from planning through post-event services.',
+  },
+];
+
+export const LEADERSHIP_PROFILES = [
+  {
+    id: 'bhuvi',
+    name: 'Bhuvi G R',
+    role: 'Founder & Managing Director',
+    tag: 'LEADERSHIP PROFILE',
+    image: '/logo/logo-full.jpg',
+    width: 1254,
+    height: 1254,
+    objectPosition: 'center',
+    bio: 'Bhuvi G R is the Founder and Managing Director of DHARA Event Pvt. Ltd., spearheading large-scale sports leagues, international athletic tournaments, corporate conventions, and live entertainment properties. With a track record of orchestrating complex high-profile events across Karnataka and Pan-India, Bhuvi specializes in turn-key project execution, broadcast operations, stakeholder management, and precision logistics. Under his visionary leadership, DHARA has expanded into a premier event production powerhouse trusted by governing bodies, corporate titans, and entertainment pioneers.',
+  },
+  {
+    id: 'prachi',
+    name: 'Prachi Shar',
+    role: 'Director',
+    tag: 'LEADERSHIP PROFILE',
+    image: '/logo/logo-full.jpg',
+    width: 1254,
+    height: 1254,
+    objectPosition: 'center',
+    bio: 'Prachi Shar serves as Director at DHARA Event Pvt. Ltd., steering creative direction, luxury social celebrations, bespoke destination weddings, and VIP hospitality curation. Bringing an impeccable design sensibility and deep understanding of guest experience, Prachi oversees brand aesthetics, immersive floral architecture, artist curation, and high-touch VIP protocols. Her dedication to curating emotive, detail-obsessed environments ensures every DHARA wedding and bespoke gala is celebrated as a timeless masterpiece.',
+  },
+];
+
+export const LARGE_SCALE_STEPS = [
+  { id: '01', label: 'VENUE' },
+  { id: '02', label: 'PRODUCTION' },
+  { id: '03', label: 'BRANDING' },
+  { id: '04', label: 'BROADCAST' },
+  { id: '05', label: 'HOSPITALITY' },
+  { id: '06', label: 'LOGISTICS' },
+  { id: '07', label: 'EXECUTION' },
+];
+
+export const EVENTS_SECTIONS = [
+  {
+    id: 'sports',
+    label: '02 —— SPORTS EVENTS',
+    titleLine1: 'Built for the energy of',
+    titleAccent: 'live sport.',
+    description: 'DHARA manages sports events across planning, venue and match-day operations, production, broadcasting, branding, sponsorship activation, hospitality, ticketing, logistics, security, transportation and accommodation.',
+    formats: [
+      'Leagues',
+      'Tournaments',
+      'Championships',
+      'Competitions',
+      'Sporting Festivals',
+      'Exhibitions',
+      'Opening Ceremonies',
+      'Closing Ceremonies',
+    ],
+    handlesCol1: [
+      'Match-Day Operations',
+      'Production',
+      'Live Streaming',
+      'Hospitality',
+      'Logistics',
+      'Transportation',
+    ],
+    handlesCol2: [
+      'Venue Management',
+      'Broadcasting',
+      'Sponsorship Activation',
+      'Ticketing',
+      'Security',
+      'Accommodation',
+    ],
+    image: '/images/large-scale-stadium.jpg',
+    width: 3840,
+    height: 2143,
+    imagePosition: 'left' as const,
+  },
+  {
+    id: 'corporate',
+    label: '03 —— CORPORATE EVENTS',
+    titleLine1: 'Experiences built',
+    titleAccent: 'around business.',
+    description: 'DHARA delivers corporate events from planning and production to guest management, branding, entertainment and on-ground execution.',
+    formats: [
+      'Conferences',
+      'Seminars',
+      'Meetings',
+      'Annual Functions',
+      'Product Launches',
+      'Award Ceremonies',
+      'Dealer Meets',
+      'Employee Engagement',
+      'Corporate Celebrations',
+      'Corporate Entertainment',
+    ],
+    handlesCol1: [
+      'Event Planning',
+      'Branding',
+      'Guest Management',
+      'Entertainment',
+      'Team Coordination',
+    ],
+    handlesCol2: [
+      'Venue & Production',
+      'Stage & AV',
+      'Hospitality',
+      'Logistics',
+    ],
+    image: '/images/capability-branding.jpg',
+    width: 2400,
+    height: 1792,
+    imagePosition: 'right' as const,
+  },
+  {
+    id: 'weddings',
+    label: '04 —— WEDDINGS & SOCIAL',
+    titleLine1: 'Personal celebrations.',
+    titleAccent: 'Thoughtfully produced.',
+    description: 'From intimate celebrations to large social occasions, DHARA manages planning, décor, production, entertainment, hospitality, catering and logistics.',
+    formats: [
+      'Weddings',
+      'Receptions',
+      'Engagements',
+      'Anniversaries',
+      'Birthday Celebrations',
+      'Social Functions',
+      'Family Functions',
+    ],
+    handlesCol1: [
+      'Planning',
+      'Décor',
+      'Entertainment',
+      'Catering',
+      'Logistics',
+    ],
+    handlesCol2: [
+      'Venue',
+      'Stage & Setup',
+      'Hospitality',
+      'Guest Management',
+    ],
+    image: '/images/capability-catering.jpg',
+    width: 2400,
+    height: 1792,
+    imagePosition: 'left' as const,
+  },
+  {
+    id: 'entertainment',
+    label: '05 —— ENTERTAINMENT & LIVE',
+    titleLine1: 'Bringing people',
+    titleAccent: 'together around the moment.',
+    description: 'DHARA manages live entertainment experiences with production, artist coordination, technical infrastructure, hospitality, branding and on-ground execution.',
+    formats: [
+      'Concerts',
+      'Musical Shows',
+      'Live Programmes',
+      'Cultural Events',
+      'Festivals',
+      'Fashion Shows',
+      'Celebrity Events',
+      'Public Programmes',
+    ],
+    handlesCol1: [
+      'Artist Management',
+      'Sound',
+      'LED & Video',
+      'Hospitality',
+      'Live Broadcast',
+    ],
+    handlesCol2: [
+      'Stage Production',
+      'Lighting',
+      'Special Effects',
+      'Branding',
+      'Logistics',
+    ],
+    image: '/images/capability-audiovisual.jpg',
+    width: 2400,
+    height: 1792,
+    imagePosition: 'right' as const,
+  },
+];
+
+export const SERVICES_ACCORDION = [
+  {
+    id: '01',
+    title: 'Event Production',
+    subtitle: 'The stage. The scale. The spectacle.',
+    items: [
+      ['Stage Design & Construction', 'Professional Lighting', 'Generators & Power', 'Stalls'],
+      ['LED Screens & Video Walls', 'Trussing', 'Technical Equipment', 'Tents'],
+      ['Sound Systems', 'Special Effects', 'Exhibition Structures'],
+    ],
+  },
+  {
+    id: '02',
+    title: 'Branding & Marketing',
+    subtitle: 'A brand presence at every touchpoint.',
+    items: [
+      ['Venue Signage & Banners', '3D Gate Fabrication', 'Promotional Displays'],
+      ['Sponsor Lounges', 'Digital Collateral', 'Experiential Stalls'],
+      ['Stage Backdrops', 'Interactive Photo Booths', 'Wayfinding Systems'],
+    ],
+  },
+  {
+    id: '03',
+    title: 'Media & Broadcast',
+    subtitle: 'Capture the moment. Extend its reach.',
+    items: [
+      ['Multi-Cam HD Coverage', 'Live Stream Integration', 'Drone Cinematography'],
+      ['LED Feed Management', 'Post-Event Highlight Films', 'Media Room Setup'],
+      ['Press Conference Podiums', 'Broadcast Audio Mixing', 'Live Graphics Engine'],
+    ],
+  },
+  {
+    id: '04',
+    title: 'Venue & Décor',
+    subtitle: 'Spaces shaped around the occasion.',
+    items: [
+      ['Architectural Drapery', 'Luxury Floral Concepts', 'Ambient Stage Lighting'],
+      ['VIP Green Rooms', 'Bespoke Seating & Lounges', 'Entrance Archways'],
+      ['Thematic Walkways', 'Custom Table Settings', 'Outdoor Canopy Structures'],
+    ],
+  },
+  {
+    id: '05',
+    title: 'Hospitality & Catering',
+    subtitle: 'Considered experiences for every guest.',
+    items: [
+      ['Multi-Cuisine Banquets', 'VIP Butler Service', 'Artist Rider Logistics'],
+      ['Live Gourmet Food Counters', 'Guest Welcome Desks', 'Refreshment Lounges'],
+      ['Executive Bar Service', 'Dietary Menu Curation', 'Hygiene & Food Safety Protocols'],
+    ],
+  },
+  {
+    id: '06',
+    title: 'Artists & Entertainment',
+    subtitle: 'The people who bring the moment to life.',
+    items: [
+      ['Headline Performers & Singers', 'Emcees & Anchors', 'Cultural & Dance Troupes'],
+      ['DJs & Live Music Bands', 'Celebrity Escort & Security', 'Backstage Greenroom Hospitality'],
+      ['Specialty Acts & Acrobats', 'Performance Scheduling', 'Soundcheck Coordination'],
+    ],
+  },
+  {
+    id: '07',
+    title: 'Logistics & Manpower',
+    subtitle: 'Every movement. Every person. In place.',
+    items: [
+      ['Fleet Vehicles & VIP Transit', 'Venue Security & Bouncers', 'Technical Rigging Crew'],
+      ['Guest Concierge & Ushers', 'Permits & Government Licenses', 'Power Backup Infrastructure'],
+      ['Emergency Medical Stations', 'Crowd Flow Barriers', 'Post-Event Clean & Clearance'],
+    ],
+  },
+];
+
+export const END_TO_END_TIMELINE = [
+  { id: '01', title: 'CONCEPT' },
+  { id: '02', title: 'PLANNING' },
+  { id: '03', title: 'CREATIVE DEVELOPMENT' },
+  { id: '04', title: 'PRODUCTION' },
+  { id: '05', title: 'BRANDING' },
+  { id: '06', title: 'TECHNICAL' },
+  { id: '07', title: 'ENTERTAINMENT' },
+  { id: '08', title: 'HOSPITALITY' },
+  { id: '09', title: 'LOGISTICS' },
+  { id: '10', title: 'EXECUTION' },
+  { id: '11', title: 'POST-EVENT' },
+];
+
+export const EVENT_TYPES = [
+  'Sports Event',
+  'Corporate Event',
+  'Wedding & Social',
+  'Entertainment & Live',
+  'Other',
+] as const;
