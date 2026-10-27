@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://dharaevents.com'),
   title: {
     default: 'DHARA Event Pvt. Ltd. | Creating Experiences. Delivering Excellence.',
-    template: '%s | DHARA Event Pvt. Ltd.',
+    template: '%s | DHARA Events',
   },
   description:
     'DHARA Event Pvt. Ltd. is a full-service event management and production company in India delivering sports events, corporate experiences, luxury weddings, and entertainment programmes from concept to execution.',
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
       'Full-service event management and production company delivering sports, corporate, weddings, and entertainment experiences from concept to execution.',
     images: [
       {
-        url: '/logo/dhara-logo-badge.webp',
-        width: 800,
-        height: 700,
+        url: '/logo/og-image.png',
+        width: 1200,
+        height: 630,
         alt: 'DHARA Event Pvt. Ltd.',
       },
     ],
@@ -63,11 +63,16 @@ export const metadata: Metadata = {
     title: 'DHARA Event Pvt. Ltd. | Creating Experiences. Delivering Excellence.',
     description:
       'Premier event management and production delivering sports, corporate, wedding, and entertainment experiences.',
-    images: ['/logo/dhara-logo-badge.webp'],
+    images: ['/logo/og-image.png'],
   },
   icons: {
-    icon: '/app/icon.png',
-    apple: '/logo/icon-192.png',
+    icon: [
+      { url: '/logo/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/logo/favicon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    shortcut: '/logo/favicon.svg',
+    apple: '/logo/favicon-512.png',
   },
   robots: {
     index: true,
@@ -82,12 +87,12 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'EventVenue', 'Organization'],
+    '@type': ['EventPlanner', 'LocalBusiness', 'Organization'],
     name: 'DHARA Event Pvt. Ltd.',
     alternateName: 'DHARA Events',
     url: 'https://dharaevents.com',
-    logo: 'https://dharaevents.com/logo/logo-full.jpg',
-    image: 'https://dharaevents.com/images/large-scale-stadium.jpg',
+    logo: 'https://dharaevents.com/logo/logo-mark.svg',
+    image: 'https://dharaevents.com/logo/og-image.png',
     description:
       'Full-service event management and production company delivering sports events, corporate experiences, luxury weddings, and entertainment programmes from concept to execution.',
     telephone: CONTACT_INFO.phone,
@@ -111,6 +116,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} dark`} suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+        <link rel="apple-touch-icon" href="/logo/favicon-512.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

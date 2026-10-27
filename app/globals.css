@@ -8,10 +8,12 @@
     --foreground: #FFFFFF;
     --foreground-muted: rgba(255, 255, 255, 0.65);
     --border-color: rgba(255, 255, 255, 0.08);
-    --primary-indigo: #5B5BF0;
-    --primary-violet: #7C6CF5;
-    --gold: #D4AF37;
-    --gold-light: #F5D77A;
+    --brand-violet: #6B5CF6;
+    --brand-lavender: #A89BFF;
+    --brand-deep: #3535D2;
+    --brand-dark: #05060A;
+    --primary-indigo: #3535D2;
+    --primary-violet: #6B5CF6;
   }
 
   html {
@@ -27,12 +29,12 @@
     color: #FFFFFF;
     overflow-x: hidden;
     min-height: 100vh;
-    selection-background-color: #5B5BF0;
+    selection-background-color: #6B5CF6;
     selection-color: #FFFFFF;
   }
 
   ::selection {
-    background: #5B5BF0;
+    background: #6B5CF6;
     color: #FFFFFF;
   }
 
@@ -48,7 +50,7 @@
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #5B5BF0;
+    background: #6B5CF6;
   }
 }
 
@@ -70,32 +72,32 @@
 .card-luxury {
   background: #0E1020;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-luxury:hover {
-  border-color: rgba(124, 108, 245, 0.4);
-  box-shadow: 0 10px 30px -10px rgba(91, 91, 240, 0.25);
+  border-color: rgba(107, 92, 246, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(107, 92, 246, 0.25);
 }
 
 .gradient-btn {
-  background: linear-gradient(135deg, #5B5BF0 0%, #7C6CF5 100%);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(135deg, #3535D2 0%, #6B5CF6 100%);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .gradient-btn:hover {
-  box-shadow: 0 0 25px rgba(91, 91, 240, 0.6);
+  box-shadow: 0 0 25px rgba(107, 92, 246, 0.6);
   transform: translateY(-1px);
 }
 
 .gradient-text-primary {
-  background: linear-gradient(135deg, #7C6CF5 0%, #A594FD 100%);
+  background: linear-gradient(135deg, #A89BFF 0%, #6B5CF6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.gradient-text-gold {
-  background: linear-gradient(135deg, #F5D77A 0%, #D4AF37 50%, #B8860B 100%);
+.gradient-text-lavender {
+  background: linear-gradient(135deg, #FFFFFF 0%, #A89BFF 60%, #6B5CF6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -105,17 +107,17 @@
   position: absolute;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(91, 91, 240, 0.12) 0%, rgba(5, 6, 10, 0) 70%);
+  background: radial-gradient(circle, rgba(107, 92, 246, 0.12) 0%, rgba(5, 6, 10, 0) 70%);
   pointer-events: none;
   border-radius: 50%;
   filter: blur(80px);
 }
 
-.ambient-glow-gold {
+.ambient-glow-deep {
   position: absolute;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(5, 6, 10, 0) 70%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(53, 53, 210, 0.12) 0%, rgba(5, 6, 10, 0) 70%);
   pointer-events: none;
   border-radius: 50%;
   filter: blur(90px);
@@ -129,9 +131,13 @@
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
-/* Hide Next.js dev indicator badge */
+/* Hide Next.js dev indicator in production & preview */
 nextjs-portal,
+#next-logo,
 [data-nextjs-toast],
-[data-nextjs-dev-tools-indicator] {
+[data-nextjs-dev-overlay] {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }

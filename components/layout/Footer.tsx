@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowUp } from 'lucide-react';
 import { FOOTER_LINKS, CONTACT_INFO } from '@/lib/constants';
-import { Logo } from '@/components/ui/Logo';
+import { Logo } from '@/components/Logo';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -14,16 +14,32 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#05060A] border-t border-white/[0.08] relative overflow-hidden pt-20 pb-12">
       {/* Ambient background glow */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#5B5BF0]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#6B5CF6]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-white/[0.08]">
-          {/* Col 1: Brand Info */}
+          {/* Col 1: Brand Info: <Logo variant="stacked" height={170} href="" /> */}
           <div className="md:col-span-5 lg:col-span-5 space-y-4">
-            <Logo variant="footer" />
+            <Logo variant="stacked" height={170} href="" />
             <div className="pt-2 text-xs text-white/50 space-y-1">
-              <p>Email: <a href={`mailto:${CONTACT_INFO.email}`} className="text-white/70 hover:text-white transition-colors">{CONTACT_INFO.email}</a></p>
-              <p>Phone: <a href={`tel:${CONTACT_INFO.phoneClean}`} className="text-white/70 hover:text-white transition-colors">{CONTACT_INFO.phone}</a></p>
+              <p>
+                Email:{' '}
+                <a
+                  href={`mailto:${CONTACT_INFO.email}`}
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  {CONTACT_INFO.email}
+                </a>
+              </p>
+              <p>
+                Phone:{' '}
+                <a
+                  href={`tel:${CONTACT_INFO.phoneClean}`}
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  {CONTACT_INFO.phone}
+                </a>
+              </p>
             </div>
           </div>
 
@@ -37,7 +53,7 @@ export const Footer: React.FC = () => {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-xs sm:text-sm text-white/70 hover:text-[#7C6CF5] transition-colors"
+                    className="text-xs sm:text-sm text-white/70 hover:text-[#6B5CF6] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -56,7 +72,7 @@ export const Footer: React.FC = () => {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-xs sm:text-sm text-white/70 hover:text-[#7C6CF5] transition-colors"
+                    className="text-xs sm:text-sm text-white/70 hover:text-[#6B5CF6] transition-colors"
                   >
                     {link.label}
                   </Link>

@@ -2,18 +2,28 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { DARK_BLUR_DATA_URL } from '@/lib/constants';
+import { BRAND_EASE } from '@/lib/animations';
 
 export const Hero: React.FC = () => {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16">
-      {/* Background Image with slow Ken Burns effect (1.0 to 1.06 on wrapper) */}
+      {/* Background Image with 20s Ken Burns effect (1.0 -> 1.06 on wrapper) */}
       <motion.div
-        initial={{ scale: 1.06 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 10, ease: 'easeOut' }}
+        animate={
+          prefersReducedMotion
+            ? { scale: 1 }
+            : { scale: [1.0, 1.06, 1.0] }
+        }
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
         className="absolute inset-0 z-0 will-change-transform"
       >
         <Image
@@ -35,48 +45,59 @@ export const Hero: React.FC = () => {
       {/* Hero Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full pt-12 sm:pt-20">
         <div className="max-w-4xl">
-          {/* Subtitle tag */}
+          {/* Subtitle tag: staggers in */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="inline-flex items-center gap-3 text-[11px] sm:text-xs font-semibold tracking-[0.25em] text-[#7C6CF5] uppercase mb-6"
+            transition={{ duration: 0.7, delay: 0.15, ease: BRAND_EASE }}
+            className="inline-flex items-center gap-3 text-[11px] sm:text-xs font-semibold tracking-[0.25em] text-[#6B5CF6] uppercase mb-6"
           >
             <span>EVENT MANAGEMENT</span>
-            <span className="w-1 h-1 rounded-full bg-[#7C6CF5]" />
+            <span className="w-1 h-1 rounded-full bg-[#6B5CF6]" />
             <span>PRODUCTION</span>
-            <span className="w-1 h-1 rounded-full bg-[#7C6CF5]" />
+            <span className="w-1 h-1 rounded-full bg-[#6B5CF6]" />
             <span>LIVE EXPERIENCES</span>
           </motion.div>
 
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.25, ease: 'easeOut' }}
-            className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-[84px] leading-[1.05] tracking-tight text-white mb-6"
-          >
-            Creating experiences.{' '}
-            <span className="italic block sm:inline font-serif text-[#7C6CF5]">
-              Delivering excellence.
+          {/* Heading reveals line by line (masked slide up), italic accent word fades in after */}
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-[84px] leading-[1.05] tracking-tight text-white mb-6">
+            <span className="block overflow-hidden">
+              <motion.span
+                initial={{ y: '100%', opacity: 0 }}
+                animate={{ y: '0%', opacity: 1 }}
+                transition={{ duration: 0.85, delay: 0.25, ease: BRAND_EASE }}
+                className="block"
+              >
+                Creating experiences.
+              </motion.span>
             </span>
-          </motion.h1>
+            <span className="block overflow-hidden mt-1">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.7, ease: BRAND_EASE }}
+                className="italic font-serif text-[#6B5CF6] block sm:inline"
+              >
+                Delivering excellence.
+              </motion.span>
+            </span>
+          </h1>
 
-          {/* Paragraph */}
+          {/* Subtitle / Paragraph */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.85, ease: BRAND_EASE }}
             className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl font-light leading-relaxed mb-10"
           >
             From sports events and corporate experiences to weddings, entertainment and large-scale live programmes, DHARA delivers end-to-end event solutions from concept to execution.
           </motion.p>
 
-          {/* CTAs */}
+          {/* Staggered Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.55 }}
+            transition={{ duration: 0.8, delay: 1.0, ease: BRAND_EASE }}
             className="flex flex-wrap items-center gap-4 sm:gap-6"
           >
             <Button href="#built-around" variant="secondary" icon="arrow-down">
@@ -93,14 +114,18 @@ export const Hero: React.FC = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/40"
       >
         <span className="text-[10px] tracking-[0.2em] uppercase">SCROLL</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={
+            prefersReducedMotion
+              ? {}
+              : { y: [0, 8, 0] }
+          }
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-1 h-5 rounded-full bg-gradient-to-b from-[#7C6CF5] to-transparent"
+          className="w-1 h-5 rounded-full bg-gradient-to-b from-[#6B5CF6] to-transparent"
         />
       </motion.div>
     </section>

@@ -11,7 +11,7 @@ interface AnimatedHeadingProps {
   size?: 'hero' | 'section' | 'card' | 'medium';
   className?: string;
   align?: 'left' | 'center' | 'right';
-  accentColor?: 'violet' | 'gold' | 'white';
+  accentColor?: 'violet' | 'lavender' | 'white';
 }
 
 export const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
@@ -38,8 +38,8 @@ export const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
   }[align];
 
   const accentColorClass = {
-    violet: 'text-[#7C6CF5]',
-    gold: 'gradient-text-gold',
+    violet: 'text-[#6B5CF6]',
+    lavender: 'gradient-text-lavender',
     white: 'text-white',
   }[accentColor];
 
@@ -49,7 +49,7 @@ export const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
         initial={{ y: '30%', opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.85, ease: 'easeOut' }}
+        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
       >
         <Component className={`font-serif text-white font-normal ${sizeClasses}`}>
           {plainText}{' '}

@@ -36,7 +36,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variantClasses = {
     primary:
-      'bg-gradient-to-r from-[#5B5BF0] to-[#7C6CF5] text-white font-medium hover:shadow-[0_0_30px_rgba(91,91,240,0.55)] border border-white/10',
+      'bg-gradient-to-r from-[#3535D2] to-[#6B5CF6] text-white font-medium hover:shadow-[0_0_35px_rgba(107,92,246,0.6)] border border-white/10',
     secondary:
       'bg-white/5 hover:bg-white/10 text-white font-medium border border-white/15 backdrop-blur-md',
     outline:
@@ -51,14 +51,22 @@ export const Button: React.FC<ButtonProps> = ({
       whileTap={{ scale: 0.98 }}
       className={`group relative inline-flex items-center justify-center rounded-full tracking-wide transition-all duration-300 select-none ${sizeClasses} ${variantClasses} ${disabled ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'} ${className}`}
     >
+      {/* Expanding glow aura on hover */}
+      {variant === 'primary' && (
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 rounded-full bg-gradient-to-r from-[#3535D2] via-[#6B5CF6] to-[#A89BFF] opacity-0 blur-lg group-hover:opacity-80 transition-all duration-300 -z-10 group-hover:scale-110 pointer-events-none"
+        />
+      )}
+
       <span className="relative z-10 transition-transform duration-300">
         {children}
       </span>
       {icon === 'arrow-right' && (
-        <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
+        <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1.5" />
       )}
       {icon === 'arrow-down' && (
-        <ArrowDown className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-y-1" />
+        <ArrowDown className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-y-1.5" />
       )}
     </motion.div>
   );

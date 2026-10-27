@@ -7,7 +7,7 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { X, ArrowRight, Phone, Mail } from 'lucide-react';
 import { NAV_ITEMS, CONTACT_INFO } from '@/lib/constants';
 import { Button } from '@/components/ui/Button';
-import { Logo } from '@/components/ui/Logo';
+import { Logo } from '@/components/Logo';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -59,13 +59,13 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           variants={menuVariants}
           className="fixed inset-0 z-50 bg-[#05060A]/95 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-10 overflow-y-auto"
         >
-          {/* Top header inside drawer */}
+          {/* Top header inside drawer: full logo at the top */}
           <div className="flex items-center justify-between border-b border-white/[0.08] pb-6">
-            <Logo variant="navbar" />
+            <Logo variant="full" height={38} />
             <button
               onClick={onClose}
               aria-label="Close menu"
-              className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:border-white/20 transition-colors"
+              className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:border-[#6B5CF6]/40 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -89,7 +89,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                     <span
                       className={`font-serif text-3xl sm:text-4xl transition-colors duration-200 ${
                         isActive
-                          ? 'text-[#7C6CF5]'
+                          ? 'text-[#6B5CF6]'
                           : 'text-white/80 group-hover:text-white'
                       }`}
                     >
@@ -97,7 +97,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                     </span>
                     <ArrowRight
                       className={`w-5 h-5 transition-transform duration-300 group-hover:translate-x-2 ${
-                        isActive ? 'text-[#7C6CF5]' : 'text-white/30'
+                        isActive ? 'text-[#6B5CF6]' : 'text-white/30'
                       }`}
                     />
                   </Link>
@@ -122,14 +122,14 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 href={`tel:${CONTACT_INFO.phoneClean}`}
                 className="flex items-center gap-2 hover:text-white transition-colors"
               >
-                <Phone className="w-3.5 h-3.5 text-[#7C6CF5]" />
+                <Phone className="w-3.5 h-3.5 text-[#6B5CF6]" />
                 <span>{CONTACT_INFO.phone}</span>
               </a>
               <a
                 href={`mailto:${CONTACT_INFO.email}`}
                 className="flex items-center gap-2 hover:text-white transition-colors"
               >
-                <Mail className="w-3.5 h-3.5 text-[#7C6CF5]" />
+                <Mail className="w-3.5 h-3.5 text-[#6B5CF6]" />
                 <span>{CONTACT_INFO.email}</span>
               </a>
             </div>

@@ -10,7 +10,7 @@ import { LargeScale } from '@/components/about/LargeScale';
 import { CTA } from '@/components/home/CTA';
 
 export const metadata: Metadata = {
-  title: 'About Us | DHARA Event Pvt. Ltd.',
+  title: 'About',
   description:
     'Learn about DHARA Event Pvt. Ltd., our leadership under Bhuvi G R and Prachi Shar, our 5-step delivery process, and our turnkey event management capabilities.',
 };

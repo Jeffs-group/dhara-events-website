@@ -9,7 +9,7 @@ import { CTA } from '@/components/home/CTA';
 import { EVENTS_SECTIONS } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Events & Experiences | DHARA Event Pvt. Ltd.',
+  title: 'Events',
   description:
     'Explore DHARA Event Pvt. Ltd. portfolio across Sports Events, Corporate Conventions, Luxury Weddings & Social Galas, and Live Entertainment Concerts.',
 };

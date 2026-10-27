@@ -1,19 +1,15 @@
+'use client';
+
 import React from 'react';
-import type { Metadata } from 'next';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { PageTransition } from '@/components/layout/PageTransition';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { AnimatedHeading } from '@/components/ui/AnimatedHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { EnquiryForm } from '@/components/contact/EnquiryForm';
 import { CONTACT_INFO, DARK_BLUR_DATA_URL } from '@/lib/constants';
-
-export const metadata: Metadata = {
-  title: 'Contact Us | Plan an Event with DHARA',
-  description:
-    'Get in touch with DHARA Event Pvt. Ltd. to plan sports tournaments, corporate conventions, luxury weddings, or entertainment festivals. Reach out via email, phone, or direct enquiry.',
-};
+import { BRAND_EASE } from '@/lib/animations';
 
 export default function ContactPage() {
   return (
@@ -34,23 +30,42 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#05060A] via-[#05060A]/90 to-[#05060A]/85" />
         </div>
 
-        {/* Ambient violet and gold glow */}
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[#5B5BF0]/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[#D4AF37]/5 rounded-full blur-[120px] pointer-events-none" />
+        {/* Ambient violet and deep indigo glow */}
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[#6B5CF6]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[#3535D2]/10 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Left Column: Heading, Context, and Contact Channels */}
+            {/* Left Column: Line-by-line heading reveal, Context, and Contact Channels */}
             <div className="lg:col-span-5 space-y-8">
-              <Reveal>
+              <div>
                 <SectionLabel number="08" text="EVENT ENQUIRY" />
-                <AnimatedHeading
-                  plainText="Let's create"
-                  accentText="something memorable."
-                  size="section"
-                  className="mb-6"
-                />
-              </Reveal>
+                {/* Left heading line-by-line reveal */}
+                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-normal leading-[1.15] mb-6">
+                  <span className="block overflow-hidden">
+                    <motion.span
+                      initial={{ y: '100%', opacity: 0 }}
+                      whileInView={{ y: '0%', opacity: 1 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.85, ease: BRAND_EASE }}
+                      className="block"
+                    >
+                      Let&apos;s create
+                    </motion.span>
+                  </span>
+                  <span className="block overflow-hidden mt-1">
+                    <motion.span
+                      initial={{ y: '100%', opacity: 0 }}
+                      whileInView={{ y: '0%', opacity: 1 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.85, delay: 0.2, ease: BRAND_EASE }}
+                      className="italic font-serif text-[#6B5CF6] block sm:inline"
+                    >
+                      something memorable.
+                    </motion.span>
+                  </span>
+                </h1>
+              </div>
 
               <Reveal delay={0.15}>
                 <p className="text-base sm:text-lg text-white/75 font-light leading-relaxed mb-6">
@@ -67,16 +82,16 @@ export default function ContactPage() {
                 <div className="space-y-4 pt-4 border-t border-white/[0.08]">
                   <a
                     href={`tel:${CONTACT_INFO.phoneClean}`}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#7C6CF5]/40 hover:bg-white/[0.05] transition-all group"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#6B5CF6]/50 hover:bg-white/[0.05] transition-all group"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#5B5BF0]/10 border border-[#5B5BF0]/20 flex items-center justify-center text-[#7C6CF5] group-hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 rounded-lg bg-[#3535D2]/15 border border-[#6B5CF6]/30 flex items-center justify-center text-[#6B5CF6] group-hover:scale-105 transition-transform">
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
                       <span className="text-[10px] uppercase tracking-widest text-white/40 block">
                         CALL US DIRECTLY
                       </span>
-                      <span className="text-sm text-white font-medium group-hover:text-[#7C6CF5] transition-colors">
+                      <span className="text-sm text-white font-medium group-hover:text-[#6B5CF6] transition-colors">
                         {CONTACT_INFO.phone}
                       </span>
                     </div>
@@ -103,30 +118,30 @@ export default function ContactPage() {
 
                   <a
                     href={`mailto:${CONTACT_INFO.email}`}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#7C6CF5]/40 hover:bg-white/[0.05] transition-all group"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#6B5CF6]/50 hover:bg-white/[0.05] transition-all group"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#5B5BF0]/10 border border-[#5B5BF0]/20 flex items-center justify-center text-[#7C6CF5] group-hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 rounded-lg bg-[#3535D2]/15 border border-[#6B5CF6]/30 flex items-center justify-center text-[#6B5CF6] group-hover:scale-105 transition-transform">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
                       <span className="text-[10px] uppercase tracking-widest text-white/40 block">
-                        EMAIL ENQUIRIES
+                        DIRECT EMAIL
                       </span>
-                      <span className="text-sm text-white font-medium group-hover:text-[#7C6CF5] transition-colors">
+                      <span className="text-sm text-white font-medium group-hover:text-[#6B5CF6] transition-colors">
                         {CONTACT_INFO.email}
                       </span>
                     </div>
                   </a>
 
-                  <div className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                    <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-300">
+                  <div className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.01] border border-white/[0.04]">
+                    <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/50">
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div>
                       <span className="text-[10px] uppercase tracking-widest text-white/40 block">
-                        OPERATIONAL REACH
+                        OPERATING REGION
                       </span>
-                      <span className="text-xs text-white/70">
+                      <span className="text-sm text-white/80 font-light">
                         {CONTACT_INFO.address}
                       </span>
                     </div>
@@ -137,9 +152,7 @@ export default function ContactPage() {
 
             {/* Right Column: Interactive Form */}
             <div className="lg:col-span-7">
-              <Reveal delay={0.2}>
-                <EnquiryForm />
-              </Reveal>
+              <EnquiryForm />
             </div>
           </div>
         </div>

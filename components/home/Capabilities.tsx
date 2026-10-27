@@ -7,6 +7,7 @@ import { SectionLabel } from '@/components/ui/SectionLabel';
 import { AnimatedHeading } from '@/components/ui/AnimatedHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { CAPABILITIES, DARK_BLUR_DATA_URL } from '@/lib/constants';
+import { BRAND_EASE, staggerFast } from '@/lib/animations';
 
 export const Capabilities: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -38,26 +39,45 @@ export const Capabilities: React.FC = () => {
 
         {/* Content Layout: Left interactive list, Right interactive preview card */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left Column: 11-item Capabilities List */}
-          <div className="lg:col-span-5 divide-y divide-white/[0.08] border-y border-white/[0.08]">
+          {/* Left Column: 11-item Capabilities List (staggers in from left) */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerFast}
+            className="lg:col-span-5 divide-y divide-white/[0.08] border-y border-white/[0.08]"
+          >
             {CAPABILITIES.map((cap, idx) => {
               const isActive = activeIndex === idx;
 
               return (
-                <button
+                <motion.button
                   key={cap.id}
+                  variants={{
+                    hidden: { opacity: 0, x: -24 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: BRAND_EASE } },
+                  }}
                   onClick={() => setActiveIndex(idx)}
                   onMouseEnter={() => setActiveIndex(idx)}
-                  className={`w-full text-left py-4 px-3 sm:px-4 flex items-center justify-between group transition-all duration-300 rounded-lg ${
+                  className={`w-full text-left py-4 px-3 sm:px-4 flex items-center justify-between group transition-all duration-300 rounded-lg relative overflow-hidden ${
                     isActive
                       ? 'bg-white/[0.06] text-white'
                       : 'text-white/60 hover:text-white hover:bg-white/[0.02]'
                   }`}
                 >
-                  <div className="flex items-center gap-4 sm:gap-6">
+                  {/* Violet Progress Bar on Active Item */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="cap-active-bar"
+                      className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#6B5CF6] shadow-[0_0_12px_#6B5CF6]"
+                      transition={{ duration: 0.25, ease: BRAND_EASE }}
+                    />
+                  )}
+
+                  <div className="flex items-center gap-4 sm:gap-6 pl-2">
                     <span
                       className={`text-xs uppercase tracking-widest font-semibold transition-colors ${
-                        isActive ? 'text-[#7C6CF5]' : 'text-white/30 group-hover:text-white/60'
+                        isActive ? 'text-[#6B5CF6]' : 'text-white/30 group-hover:text-white/60'
                       }`}
                     >
                       {cap.id}
@@ -73,25 +93,25 @@ export const Capabilities: React.FC = () => {
 
                   <span
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      isActive ? 'bg-[#7C6CF5] scale-100 shadow-[0_0_8px_#7C6CF5]' : 'opacity-0 scale-50'
+                      isActive ? 'bg-[#6B5CF6] scale-100 shadow-[0_0_8px_#6B5CF6]' : 'opacity-0 scale-50'
                     }`}
                   />
-                </button>
+                </motion.button>
               );
             })}
-          </div>
+          </motion.div>
 
-          {/* Right Column: Dynamic Preview Card with Swapping Image */}
+          {/* Right Column: Dynamic Preview Card with Cross-fading & slight scaling image */}
           <div className="lg:col-span-7 lg:sticky lg:top-28">
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0E1020] aspect-[16/11] sm:aspect-[16/10] shadow-2xl flex flex-col justify-end p-6 sm:p-10">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCapability.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                  className="absolute inset-0 z-0"
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.5, ease: BRAND_EASE }}
+                  className="absolute inset-0 z-0 will-change-transform"
                 >
                   <Image
                     src={activeCapability.image}
@@ -131,7 +151,7 @@ export const Capabilities: React.FC = () => {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.35 }}
+                    transition={{ duration: 0.35, ease: BRAND_EASE }}
                   >
                     <h3 className="font-serif text-2xl sm:text-4xl text-white font-normal mb-3">
                       {activeCapability.heading}

@@ -7,8 +7,8 @@ import { motion } from 'framer-motion';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { AnimatedHeading } from '@/components/ui/AnimatedHeading';
 import { Reveal } from '@/components/ui/Reveal';
-
 import { DARK_BLUR_DATA_URL } from '@/lib/constants';
+import { fadeUp, staggerContainer } from '@/lib/animations';
 
 const ABOUT_CATEGORIES = [
   {
@@ -74,20 +74,23 @@ export const WhatWeDo: React.FC = () => {
           </div>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8">
-          {ABOUT_CATEGORIES.map((cat, idx) => (
+        {/* 4 Bento Cards with Staggered Entrance */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8"
+        >
+          {ABOUT_CATEGORIES.map((cat) => (
             <motion.div
               key={cat.category}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.65, delay: idx * 0.1 }}
-              className={`${cat.colSpan} group relative rounded-2xl overflow-hidden border border-white/10 bg-[#0E1020] min-h-[340px] sm:min-h-[380px] flex flex-col justify-end p-6 sm:p-8 hover:border-[#7C6CF5]/40 transition-all duration-500 shadow-xl`}
+              variants={fadeUp}
+              className={`${cat.colSpan} group relative rounded-2xl overflow-hidden border border-white/10 bg-[#0E1020] min-h-[340px] sm:min-h-[380px] flex flex-col justify-end p-6 sm:p-8 hover:border-[#6B5CF6]/60 hover:shadow-[0_0_30px_rgba(107,92,246,0.3)] transition-all duration-500 shadow-xl`}
             >
               <Link href={cat.href} className="absolute inset-0 z-30" aria-label={cat.title} />
 
-              {/* Background Image */}
+              {/* Background Image: zooms to 1.04 on hover */}
               <div className="absolute inset-0 z-0 overflow-hidden">
                 <Image
                   src={cat.image}
@@ -104,17 +107,17 @@ export const WhatWeDo: React.FC = () => {
 
               {/* Top Watermark & Category Tag */}
               <div className="absolute top-6 left-6 right-6 z-10 flex items-center justify-between">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#7C6CF5]">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#6B5CF6]">
                   {cat.category}
                 </span>
-                <span className="font-serif text-3xl sm:text-4xl text-white/30 group-hover:text-white/70 transition-colors">
+                <span className="font-serif text-3xl sm:text-4xl text-white/30 group-hover:text-white/80 group-hover:-translate-y-1 transition-all duration-300">
                   {cat.number}
                 </span>
               </div>
 
               {/* Content at Bottom */}
               <div className="relative z-10 max-w-lg">
-                <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal mb-3 group-hover:text-amber-100 transition-colors">
+                <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal mb-3 group-hover:text-[#A89BFF] transition-colors">
                   {cat.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
@@ -123,7 +126,7 @@ export const WhatWeDo: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
